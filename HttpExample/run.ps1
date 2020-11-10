@@ -15,10 +15,10 @@ if (-not $name) {
 $body = "This HTTP triggered function executed successfully. Pass a name in the query string or in the request body for a personalized response."
 
 $secpasswd = ConvertTo-SecureString "your secret password" -AsPlainText -Force
-$mycred = New-Object System.Management.Automation.PSCredential ("YourusernameForAct", $secpasswd)
+$mycred = New-Object System.Management.Automation.PSCredential ("YourusernameForAcr", $secpasswd)
 
 if ($name) {
-    New-AzContainerGroup -ResourceGroupName "myResourceGroup" -Name $name -Image yourprivateacr.azurecr.io/your image name:latest -IpAddressType Public -RegistryCredential $mycred
+    New-AzContainerGroup -ResourceGroupName "myResourceGroup" -Name $name -Image yourprivateacrname.azurecr.io/your image name:latest -IpAddressType Public -RegistryCredential $mycred
 
     if ($?) {
         $body = "This HTTP triggered function executed successfully. Started container group $name"
